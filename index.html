@@ -61,7 +61,7 @@ header.nav{position:sticky;top:0;z-index:60;background:#fff;box-shadow:0 4px 24p
 .logo .mk svg{width:24px;height:34px}
 .logo b{color:var(--violet)}
 .menu{display:flex;gap:32px;font:700 15px Montserrat,sans-serif}
-.menu a{padding:6px 0;position:relative}
+.menu a{padding:6px 0;position:relative;white-space:nowrap}
 .menu a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--violet);transition:.2s}
 .menu a:hover,.menu a.on{color:var(--violet)}
 .menu a:hover::after,.menu a.on::after{width:100%}
@@ -230,6 +230,7 @@ footer .soc svg{width:17px;height:17px}
 .copy{border-top:1px solid rgba(255,255,255,.08);margin-top:60px;padding:24px 0;text-align:center;font-size:14px}
 
 /* responsive */
+@media (max-width:1240px){.nav .btn{display:none}}
 @media (max-width:1080px){
   .menu{gap:22px}
   .features .grid,.pgrid{grid-template-columns:repeat(2,1fr)}
