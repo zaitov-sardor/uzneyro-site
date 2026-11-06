@@ -7,328 +7,349 @@
 <meta name="description" content="UzNeyro: rus va ingliz tilini qisqa videodarslar, testlar va Telegram bot orqali o'rganing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --teal-900:#08403e; --teal-800:#0b5350; --teal-700:#0f6b66; --teal-500:#1a8f87; --teal-100:#e3f2f0;
-  --orange:#f7a320; --orange-600:#e58b00; --ink:#14233a; --muted:#5d6b7c; --line:#e6ebef;
-  --bg:#ffffff; --soft:#f5f8f9; --radius:22px; --shadow:0 14px 40px rgba(8,64,62,.10);
+  --violet:#6c4be0; --violet-2:#8a6cf2; --violet-d:#2a1a5e; --night:#170e33; --night-2:#211547;
+  --yellow:#ffc23d; --yellow-d:#f2a900; --lime:#c8f43c; --green:#0f3d2e; --coral:#ff7a59;
+  --ink:#1b1430; --muted:#646079; --line:#ebe8f3; --soft:#f6f4fc; --r:24px;
+  --shadow:0 18px 44px rgba(42,26,94,.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Nunito,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;overflow-x:hidden}
+body{font:16px/1.65 Inter,system-ui,sans-serif;color:var(--ink);background:#fff;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-img,svg{display:block;max-width:100%}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-h1,h2,h3{line-height:1.15;font-weight:900;letter-spacing:-.01em}
-.hl{color:var(--orange)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.03em;transition:.2s;border:2px solid transparent;cursor:pointer}
-.btn-o{background:var(--orange);color:#fff}.btn-o:hover{background:var(--orange-600)}
-.btn-w{background:#fff;color:var(--ink)}.btn-w:hover{background:var(--teal-100)}
-.btn-line{border-color:#fff;color:#fff}.btn-line:hover{background:#fff;color:var(--ink)}
-.tag{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
-.tag::before{content:"";width:22px;height:2px;background:currentColor}
-.sec{padding:96px 0}
-.sec-head{text-align:center;max-width:640px;margin:0 auto 52px}
-.sec-head h2{font-size:clamp(30px,4vw,42px);margin:10px 0 12px}
-.sec-head p{color:var(--muted)}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4,.btn,.logo,.tag,.num{font-family:Montserrat,sans-serif}
+h1,h2,h3{line-height:1.15;font-weight:800;letter-spacing:-.015em}
+.hl{color:var(--violet)}
+.dark .hl,.hero .hl{color:var(--yellow)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:.2s;white-space:nowrap}
+.btn i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.12);font-size:12px}
+.btn-y{background:var(--yellow);color:var(--night)}.btn-y:hover{background:var(--yellow-d)}
+.btn-v{background:var(--violet);color:#fff}.btn-v:hover{background:var(--violet-d)}
+.btn-w{background:#fff;color:var(--night)}.btn-w:hover{background:var(--lime)}
+.tag{display:inline-flex;align-items:center;gap:10px;color:var(--violet);font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.tag svg{width:18px;height:18px}
+.hero .tag,.dark .tag{color:var(--lime)}
+.sec{padding:110px 0}
+.head{text-align:center;max-width:660px;margin:0 auto 56px}
+.head h2{font-size:clamp(30px,4vw,44px);margin:12px 0 14px}
+.head p{color:var(--muted)}
 
 /* top bar */
-.topbar{background:var(--teal-800);color:#d9ecea;font-size:14px}
-.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;flex-wrap:wrap}
-.topbar .follow{display:flex;align-items:center;gap:10px;background:var(--orange);color:#fff;align-self:stretch;padding:0 18px;margin-left:-20px;font-weight:700}
+.topbar{background:var(--night);color:#d8d2f2;font-size:14px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:46px;gap:16px}
+.follow{display:flex;align-items:center;gap:12px;background:var(--yellow);color:var(--night);font-weight:700;align-self:stretch;padding:0 30px 0 20px;margin-left:-20px;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%)}
 .soc{display:flex;gap:6px}
-.soc a{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center}
-.soc a:hover{background:#fff;color:var(--orange)}
-.soc svg{width:13px;height:13px}
-.topbar .info{display:flex;gap:22px;flex-wrap:wrap}
-.topbar .info span{display:flex;align-items:center;gap:7px}
-.lang{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:999px;overflow:hidden}
-.lang button{background:none;border:0;color:#d9ecea;padding:3px 11px;font:700 13px Nunito,sans-serif;cursor:pointer}
-.lang button.on{background:#fff;color:var(--teal-800)}
+.soc a{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--night);color:#fff;transition:.2s}
+.soc a:hover{background:var(--violet)}
+.soc svg{width:14px;height:14px}
+.tinfo{display:flex;gap:26px;align-items:center}
+.tinfo span{display:flex;align-items:center;gap:8px}
+.tinfo svg{width:15px;height:15px;color:var(--yellow)}
+.lang{display:flex;border:1px solid rgba(255,255,255,.3);border-radius:999px;overflow:hidden}
+.lang button{background:none;border:0;color:#d8d2f2;padding:4px 12px;font:700 12px Montserrat,sans-serif;cursor:pointer}
+.lang button.on{background:var(--yellow);color:var(--night)}
 
 /* nav */
-header.nav{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.06)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:20px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:26px;color:var(--teal-800)}
-.logo b{color:var(--orange)}
-.menu{display:flex;gap:30px;font-weight:700;font-size:15px}
-.menu a:hover,.menu a.on{color:var(--orange)}
+header.nav{position:sticky;top:0;z-index:60;background:#fff;box-shadow:0 4px 24px rgba(23,14,51,.07)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:82px;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:26px;color:var(--night);letter-spacing:-.02em}
+.logo .mk{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--violet),var(--violet-2));display:grid;place-items:center}
+.logo .mk svg{width:24px;height:34px}
+.logo b{color:var(--violet)}
+.menu{display:flex;gap:32px;font:700 15px Montserrat,sans-serif}
+.menu a{padding:6px 0;position:relative}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--violet);transition:.2s}
+.menu a:hover,.menu a.on{color:var(--violet)}
+.menu a:hover::after,.menu a.on::after{width:100%}
 .burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
-.burger span{display:block;width:24px;height:3px;background:var(--teal-800);margin:4px 0;border-radius:2px}
+.burger span{display:block;width:26px;height:3px;background:var(--night);margin:5px 0;border-radius:2px}
 
 /* hero */
-.hero{position:relative;background:linear-gradient(110deg,var(--teal-900) 0%,var(--teal-700) 58%,#178a82 100%);color:#fff;overflow:hidden}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(247,163,32,.25),transparent 40%);pointer-events:none}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:80px;padding-bottom:150px;position:relative;z-index:1}
-.hero h1{font-size:clamp(38px,5.4vw,64px);margin:16px 0 18px}
-.hero p{color:#cfe7e4;max-width:520px;font-size:17px;margin-bottom:30px}
+.hero{position:relative;color:#fff;min-height:640px;display:flex;align-items:center;background:var(--night) url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1800&q=70") center 30%/cover}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,14,51,.94) 0%,rgba(42,26,94,.82) 45%,rgba(108,75,224,.35) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:70px;padding-bottom:170px}
+.hero h1{font-size:clamp(38px,5.6vw,68px);max-width:720px;margin:18px 0 20px}
+.hero p{max-width:560px;color:#ddd6f7;font-size:17px;margin-bottom:34px}
 .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
-.hero-art{position:relative;height:430px}
-.bubble{position:absolute;border-radius:28px;display:grid;place-items:center;font-weight:900;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-.b1{left:4%;top:6%;width:210px;height:210px;background:#fff;color:var(--teal-800);font-size:88px;border-radius:50% 50% 50% 12px}
-.b2{right:2%;top:24%;width:190px;height:190px;background:var(--orange);color:#fff;font-size:80px;border-radius:50% 50% 12px 50%}
-.b3{left:22%;bottom:2%;width:260px;padding:18px 22px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);display:block;font-size:15px;font-weight:700;border-radius:20px}
-.b3 small{display:block;color:var(--orange);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
-.b1 sub,.b2 sub{position:absolute;bottom:26px;font-size:14px;letter-spacing:.14em}
-.dots{position:absolute;right:30%;top:0;width:90px;height:90px;background-image:radial-gradient(rgba(255,255,255,.4) 2px,transparent 2px);background-size:14px 14px}
+.arrow{position:absolute;top:44%;z-index:2;width:50px;height:50px;border-radius:50%;border:2px solid rgba(255,255,255,.5);display:grid;place-items:center;color:#fff;font-size:20px}
+.arrow:hover{background:var(--yellow);border-color:var(--yellow);color:var(--night)}
+.arrow.l{left:24px}.arrow.r{right:24px}
 
 /* features */
-.features{position:relative;z-index:2;margin-top:-90px}
-.features .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.fcard{background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);border-bottom:4px solid transparent;transition:.25s}
-.fcard:hover{transform:translateY(-6px);border-color:var(--orange)}
-.fcard .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
-.ico{width:62px;height:62px;border-radius:50%;background:var(--teal-700);color:#fff;display:grid;place-items:center}
-.ico svg{width:28px;height:28px}
-.fcard .num{font-size:40px;font-weight:900;color:transparent;-webkit-text-stroke:1.5px var(--teal-500)}
+.features{position:relative;z-index:3;margin-top:-120px}
+.features .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.fcard{background:#fff;border-radius:var(--r);padding:30px 26px;box-shadow:var(--shadow);position:relative;transition:.25s;border-top:5px solid transparent}
+.fcard:hover{transform:translateY(-8px);border-top-color:var(--yellow)}
+.fcard .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+.ico{width:66px;height:66px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;flex:none;box-shadow:0 0 0 6px #efeafe}
+.ico svg{width:30px;height:30px}
+.num{font-size:44px;font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1.6px var(--violet-2)}
 .fcard h3{font-size:19px;margin-bottom:8px}
 .fcard p{color:var(--muted);font-size:15px}
 
 /* about */
-.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.about-art{position:relative;height:500px}
-.pic{position:absolute;overflow:hidden;display:grid;place-items:center;color:#fff;font-weight:900}
-.p1{left:0;top:0;width:58%;height:68%;border-radius:120px 120px 30px 30px;background:linear-gradient(160deg,var(--teal-500),var(--teal-900))}
-.p2{right:0;top:4%;width:38%;aspect-ratio:1;border-radius:50%;background:linear-gradient(160deg,var(--orange),#d97b00);border:8px solid #fff;box-shadow:0 0 0 3px var(--orange)}
-.p3{right:4%;bottom:0;width:52%;height:46%;border-radius:30px 30px 120px 30px;background:linear-gradient(160deg,#2aa79d,var(--teal-700))}
-.pic .glyph{font-size:72px;opacity:.95}
-.pic .cap{position:absolute;bottom:16px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
-.badge{position:absolute;left:4%;bottom:6%;background:var(--orange);color:#fff;border-radius:22px;padding:16px 20px;display:flex;align-items:center;gap:12px;font-weight:800;max-width:230px;box-shadow:var(--shadow)}
-.badge .bi{width:46px;height:46px;flex:none;border-radius:50%;background:#fff;color:var(--orange);display:grid;place-items:center}
-.about h2{font-size:clamp(30px,4vw,42px);margin:12px 0 18px}
-.about p.lead{color:var(--muted);margin-bottom:26px}
-.about .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:30px}
-.point{display:flex;gap:14px;margin-bottom:16px}
-.point .ico{width:48px;height:48px;flex:none;background:var(--orange)}
-.point .ico svg{width:22px;height:22px}
-.point h4{font-size:17px}
-.point p{font-size:14px;color:var(--muted)}
-.quote{background:var(--teal-100);border-left:4px solid var(--teal-700);border-radius:16px;padding:20px;font-size:15px;color:var(--teal-900);position:relative}
-.quote::after{content:"”";position:absolute;right:14px;bottom:-24px;font-size:72px;font-weight:900;color:var(--teal-700)}
-.about .row{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.about .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+.ab-art{position:relative;height:560px}
+.ab-art img{position:absolute;object-fit:cover}
+.ab1{left:0;top:0;width:52%;height:66%;border-radius:200px 200px 34px 34px}
+.ab2{right:4%;top:2%;width:40%;aspect-ratio:1;border-radius:50%;border:8px solid #fff;outline:3px dashed var(--yellow);outline-offset:6px}
+.ab3{right:0;bottom:0;width:54%;height:50%;border-radius:34px 34px 200px 34px}
+.badge{position:absolute;left:3%;bottom:8%;z-index:2;background:var(--yellow);color:var(--night);border-radius:22px;padding:18px 22px;display:flex;align-items:center;gap:14px;font:800 15px/1.3 Montserrat,sans-serif;max-width:250px;box-shadow:var(--shadow)}
+.badge .bi{width:52px;height:52px;flex:none;border-radius:50%;background:var(--night);color:var(--yellow);display:grid;place-items:center}
+.badge .bi svg{width:24px;height:24px}
+.about h2{font-size:clamp(30px,4vw,44px);margin:14px 0 18px}
+.about .lead{color:var(--muted);margin-bottom:28px}
+.ab-split{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin-bottom:34px}
+.pt{display:flex;gap:14px;margin-bottom:20px}
+.pt .ico{width:54px;height:54px;background:var(--yellow);color:var(--night);box-shadow:none}
+.pt .ico svg{width:24px;height:24px}
+.pt h4{font-size:17px}
+.pt p{font-size:14px;color:var(--muted)}
+.quote{background:var(--soft);border-radius:20px;padding:24px;font-size:15px;color:var(--violet-d);position:relative;border:1px solid var(--line)}
+.quote b{position:absolute;right:18px;bottom:-30px;font:900 80px/1 Montserrat,sans-serif;color:var(--violet)}
+.ab-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
 .call{display:flex;align-items:center;gap:12px}
-.call .ico{width:46px;height:46px;background:var(--teal-100);color:var(--teal-700)}
+.call .ico{width:52px;height:52px;background:#efeafe;color:var(--violet);box-shadow:none}
+.call .ico svg{width:22px;height:22px}
 .call small{display:block;color:var(--muted);font-size:13px}
-.call b{font-size:17px}
+.call b{font:800 17px Montserrat,sans-serif}
 
 /* counters */
-.counters{background:linear-gradient(110deg,var(--teal-800),var(--teal-500));color:#fff;position:relative;overflow:hidden}
-.counters::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 2px,transparent 2px 22px)}
-.counters .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:72px 20px;position:relative;text-align:center}
-.cnt .ico{width:84px;height:84px;margin:0 auto 18px;background:var(--orange);border-radius:50% 50% 50% 14px}
-.cnt .ico svg{width:36px;height:36px}
-.cnt b{display:block;font-size:46px;font-weight:900;line-height:1}
-.cnt span{color:#d7efec;font-weight:700}
+.counters{position:relative;color:#fff;background:var(--night) url("https://images.unsplash.com/photo-1758270704763-22072a90d3b6?auto=format&fit=crop&w=1800&q=60") center/cover}
+.counters::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(42,26,94,.95),rgba(108,75,224,.88))}
+.counters .grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:84px 20px;text-align:center}
+.cnt .ico{width:92px;height:92px;margin:0 auto 20px;border-radius:50% 50% 50% 16px;background:var(--yellow);color:var(--night);box-shadow:0 0 0 8px rgba(255,255,255,.12)}
+.cnt .ico svg{width:38px;height:38px}
+.cnt b{display:block;font:900 50px/1 Montserrat,sans-serif}
+.cnt span{color:#ddd6f7;font-weight:600}
 
 /* courses */
 .courses{background:var(--soft)}
-.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.course{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.25s}
-.course:hover{transform:translateY(-6px)}
-.course .thumb{height:200px;position:relative;display:grid;place-items:center;color:#fff;font-size:64px;font-weight:900;margin:12px 12px 0;border-radius:16px}
-.th-ru{background:linear-gradient(135deg,#0f6b66,#08403e)}
-.th-en{background:linear-gradient(135deg,#f7a320,#d77400)}
-.th-ielts{background:linear-gradient(135deg,#1a8f87,#14233a)}
-.course .pill{position:absolute;top:12px;right:12px;background:var(--orange);color:#fff;font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px}
-.th-en .pill{background:var(--teal-800)}
-.course .body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
-.course .meta{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:8px}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.course{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.25s;padding:12px}
+.course:hover{transform:translateY(-8px)}
+.course .th{position:relative;height:220px;border-radius:18px;overflow:hidden}
+.course .th img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.course:hover .th img{transform:scale(1.06)}
+.pill{position:absolute;top:14px;right:14px;background:var(--yellow);color:var(--night);font:800 12px Montserrat,sans-serif;padding:6px 14px;border-radius:999px}
+.course .bd{padding:20px 14px 10px;display:flex;flex-direction:column;flex:1}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:10px}
+.meta>span{display:flex;align-items:center;gap:6px}
+.meta svg{width:16px;height:16px;color:var(--violet)}
 .course h3{font-size:21px;margin-bottom:8px}
 .course p{color:var(--muted);font-size:15px;flex:1}
-.course .foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;font-weight:800}
-.course .foot a{color:var(--orange)}
-.course .foot a:hover{color:var(--teal-700)}
+.cfoot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;font:800 15px Montserrat,sans-serif}
+.cfoot a{color:var(--violet)}
+.cfoot .free{color:#1a9b5b}
 
-/* formats (team-like) */
-.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.fmt{text-align:center}
-.fmt .ring{width:170px;height:170px;margin:0 auto 18px;border-radius:50%;border:3px dashed var(--orange);padding:10px}
-.fmt .ring div{width:100%;height:100%;border-radius:50%;background:var(--teal-700);color:#fff;display:grid;place-items:center}
-.fmt:nth-child(even) .ring div{background:var(--orange)}
-.fmt .ring svg{width:54px;height:54px}
-.fmt h3{font-size:19px}
-.fmt p{color:var(--muted);font-size:14px;max-width:230px;margin:6px auto 0}
+/* personas */
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.per{text-align:center}
+.per .ph{position:relative;width:100%;aspect-ratio:1/1.1;border-radius:200px 200px 28px 28px;overflow:hidden;margin-bottom:20px;background:var(--soft)}
+.per .ph img{width:100%;height:100%;object-fit:cover}
+.per .ph span{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:var(--violet);color:#fff;font:800 12px Montserrat,sans-serif;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.per:nth-child(even) .ph span{background:var(--yellow);color:var(--night)}
+.per h3{font-size:19px}
+.per p{color:var(--muted);font-size:14px;margin-top:6px}
 
-/* topics gallery */
-.gallery{background:var(--soft)}
-.ggrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;grid-auto-flow:dense;gap:18px}
-.gi{border-radius:20px;padding:20px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
-.gi b{font-size:22px;line-height:1.2}
-.gi small{opacity:.85;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
-.gi .big{position:absolute;right:14px;top:6px;font-size:56px;font-weight:900;opacity:.18}
+/* video */
+.video{position:relative;color:#fff;background:var(--night) url("https://images.unsplash.com/photo-1758270705518-b61b40527e76?auto=format&fit=crop&w=1800&q=60") center/cover}
+.video::before{content:"";position:absolute;inset:0;background:rgba(23,14,51,.78)}
+.video .wrap{position:relative;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;padding-top:100px;padding-bottom:100px}
+.video h2{font-size:clamp(30px,4vw,46px);margin:14px 0 14px}
+.video p{color:#ddd6f7;max-width:560px}
+.play{width:110px;height:110px;margin:14px;border-radius:50%;background:var(--yellow);color:var(--night);display:grid;place-items:center;position:relative}
+.play svg{width:38px;height:38px;margin-left:6px}
+.play::before,.play::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(255,194,61,.5);animation:pulse 2.2s infinite}
+.play::after{animation-delay:1.1s}
+@keyframes pulse{from{transform:scale(.85);opacity:1}to{transform:scale(1.35);opacity:0}}
+
+/* posts gallery */
+.ggrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;grid-auto-flow:dense;gap:20px}
+.gi{border-radius:22px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:22px;transition:.25s}
+.gi:hover{transform:translateY(-6px)}
 .gi.tall{grid-row:span 2}.gi.wide{grid-column:span 2}
-.g1{background:var(--teal-800)}.g2{background:var(--orange)}.g3{background:#1a8f87}.g4{background:#14233a}.g5{background:#d77400}.g6{background:var(--teal-500)}
+.gi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gi.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(23,14,51,.85))}
+.gi.photo .cap{position:absolute;left:20px;right:20px;bottom:18px;z-index:1;text-align:left;color:#fff;font:800 19px/1.25 Montserrat,sans-serif}
+.gi .k{font:700 11px Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+.post-en{background:radial-gradient(circle at 50% 120%,#4b2aa8,var(--night) 70%);color:#fff}
+.post-en .big{font:900 clamp(34px,4vw,52px)/1 Montserrat,sans-serif;color:var(--lime);margin:12px 0}
+.post-en .strike{text-decoration:line-through;color:#ff6b8a;font-weight:700}
+.post-en .ok{font-size:14px;margin-top:8px}
+.post-ru{background:var(--green);color:#fff}
+.post-ru .ru{font:800 26px/1.2 Montserrat,sans-serif;color:var(--yellow);margin:6px 0 8px}
+.post-ru .dot{width:9px;height:9px;border-radius:50%;background:var(--coral);margin:4px auto}
+.post-list{background:var(--night);color:#fff;align-items:stretch;text-align:left;justify-content:center;gap:8px}
+.post-list div{border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:7px 12px;font:700 13px Montserrat,sans-serif;display:flex;gap:10px}
+.post-list s{color:#a49bc9;font-weight:600}
+.post-list em{font-style:normal;color:var(--lime)}
+.post-audio{background:linear-gradient(160deg,#145741,var(--green));color:#fff;align-items:flex-start;text-align:left;justify-content:flex-end}
+.chip{background:var(--coral);color:#fff;font:800 11px Montserrat,sans-serif;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.post-audio b{font:900 24px/1.15 Montserrat,sans-serif}
 
-/* how / testimonials replacement */
-.how{background:var(--teal-900);color:#fff}
-.how .sec-head p{color:#bcd9d6}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:30px}
-.step .n{width:52px;height:52px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-weight:900;font-size:20px;margin-bottom:18px}
-.step h3{font-size:20px;margin-bottom:8px}
-.step p{color:#bcd9d6;font-size:15px}
-
-/* lessons (news) */
-.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.news{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:.25s}
-.news:hover{box-shadow:var(--shadow)}
-.news .nt{height:150px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#fff;padding:20px;text-align:center}
-.news .nb{padding:22px}
-.news .when{display:inline-block;background:var(--teal-100);color:var(--teal-700);font-weight:800;font-size:12px;padding:3px 10px;border-radius:999px;margin-bottom:10px}
-.news h3{font-size:18px;margin-bottom:6px}
-.news p{color:var(--muted);font-size:14px}
+/* lessons */
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.news{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.news:hover{transform:translateY(-6px)}
+.news .nt{height:200px;position:relative;overflow:hidden}
+.news .nt img{width:100%;height:100%;object-fit:cover}
+.news .date{position:absolute;left:16px;bottom:0;background:var(--yellow);color:var(--night);font:800 12px Montserrat,sans-serif;padding:8px 14px;border-radius:12px 12px 0 0}
+.news .nb{padding:24px}
+.news .by{display:flex;gap:16px;color:var(--muted);font-size:13px;margin-bottom:10px}
+.news h3{font-size:19px;margin-bottom:10px}
+.news p{color:var(--muted);font-size:15px}
+.news .more{display:inline-block;margin-top:14px;font:800 14px Montserrat,sans-serif;color:var(--violet)}
 
 /* subscribe */
-.sub{padding:0 0 96px}
-.sub .box{background:linear-gradient(110deg,var(--orange),#ffbf4d);border-radius:30px;padding:46px 50px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;color:#fff;position:relative;overflow:hidden}
-.sub .box::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.18)}
+.sub{position:relative;z-index:2;margin-top:-10px;margin-bottom:-90px}
+.sub .box{background:linear-gradient(110deg,var(--violet),var(--violet-2));border-radius:30px;padding:48px 54px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;color:#fff;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.sub .box::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;border-radius:50%;border:40px solid rgba(255,255,255,.08)}
 .sub h2{font-size:clamp(26px,3vw,36px)}
-.sub p{opacity:.95;margin-top:8px}
-.sub .acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;position:relative;z-index:1}
-.sub .btn-t{background:var(--teal-800);color:#fff}.sub .btn-t:hover{background:var(--teal-900)}
+.sub p{color:#e7e1ff;margin-top:8px}
+.acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;position:relative;z-index:1}
 
 /* footer */
-footer{background:#0b1d2c;color:#a9b6c3;padding:72px 0 0;font-size:15px}
+footer{background:var(--night);color:#a9a2c8;padding:170px 0 0;font-size:15px}
 footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
-footer .logo{color:#fff;margin-bottom:14px}
-footer h4{color:#fff;font-size:18px;margin-bottom:18px;position:relative;padding-bottom:10px}
-footer h4::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--orange);border-radius:2px}
+footer .logo{color:#fff;margin-bottom:16px}
+footer .logo b{color:var(--yellow)}
+footer h4{color:#fff;font-size:19px;margin-bottom:20px;padding-bottom:12px;position:relative}
+footer h4::after{content:"";position:absolute;left:0;bottom:0;width:40px;height:3px;border-radius:2px;background:var(--yellow)}
 footer ul{list-style:none}
-footer li{margin-bottom:10px}
-footer a:hover{color:var(--orange)}
-footer .soc{margin-top:18px}
-footer .soc a{width:36px;height:36px;background:rgba(255,255,255,.08)}
-footer .soc svg{width:16px;height:16px}
-.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:56px;padding:22px 0;text-align:center;font-size:14px}
+footer li{margin-bottom:12px}
+footer li a:hover{color:var(--yellow)}
+footer .soc{margin-top:20px}
+footer .soc a{width:40px;height:40px;background:var(--night-2)}
+footer .soc a:hover{background:var(--yellow);color:var(--night)}
+footer .soc svg{width:17px;height:17px}
+.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:60px;padding:24px 0;text-align:center;font-size:14px}
 
 /* responsive */
-@media (max-width:1024px){
-  .menu{gap:20px}
-  .features .grid,.fgrid{grid-template-columns:repeat(2,1fr)}
+@media (max-width:1080px){
+  .menu{gap:22px}
+  .features .grid,.pgrid{grid-template-columns:repeat(2,1fr)}
   .cgrid,.ngrid{grid-template-columns:repeat(2,1fr)}
+  .ggrid{grid-template-columns:repeat(2,1fr)}
   footer .grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:860px){
-  .menu{display:none;position:absolute;left:0;right:0;top:76px;background:#fff;flex-direction:column;gap:0;box-shadow:0 12px 24px rgba(0,0,0,.08)}
+@media (max-width:900px){
+  .menu{display:none;position:absolute;left:0;right:0;top:82px;background:#fff;flex-direction:column;gap:0;box-shadow:0 14px 24px rgba(0,0,0,.08)}
   .menu.open{display:flex}
-  .menu a{padding:14px 20px;border-top:1px solid var(--line)}
+  .menu a{padding:15px 20px;border-top:1px solid var(--line)}
+  .menu a::after{display:none}
   .burger{display:block}
   .nav .btn{display:none}
-  .topbar .info{display:none}
-  .hero .wrap{grid-template-columns:1fr;padding-top:56px;padding-bottom:130px}
-  .hero-art{height:300px;max-width:420px}
-  .b1{width:150px;height:150px;font-size:62px}.b2{width:140px;height:140px;font-size:58px}
-  .b3{left:10%;width:230px}
-  .about .wrap{grid-template-columns:1fr;gap:40px}
-  .about-art{height:420px}
-  .counters .grid{grid-template-columns:repeat(2,1fr);gap:40px 20px}
-  .ggrid{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:1fr}
-  .sub .box{grid-template-columns:1fr;padding:36px 28px}
-  .sub .acts{justify-content:flex-start}
+  .tinfo{display:none}
+  .arrow{display:none}
+  .about .wrap{grid-template-columns:1fr;gap:50px}
+  .counters .grid{grid-template-columns:repeat(2,1fr);gap:44px 20px}
+  .video .wrap{grid-template-columns:1fr}
+  .sub .box{grid-template-columns:1fr;padding:38px 28px}
+  .acts{justify-content:flex-start}
 }
-@media (max-width:560px){
-  .sec{padding:72px 0}
+@media (max-width:600px){
   .wrap{padding:0 16px}
-  .topbar .follow{margin-left:-16px}
-  .features .grid,.cgrid,.ngrid,.fgrid,.about .split{grid-template-columns:1fr}
-  .about-art{height:360px}
-  .p1{height:60%}.p3{width:50%;height:42%;right:0}
-  .pic .glyph{font-size:56px}.p3 .glyph{font-size:40px!important}.p2 .glyph{font-size:40px!important}
-  .pic .cap{font-size:11px}
-  .badge{left:0;bottom:0;max-width:155px;padding:10px 12px;font-size:13px;gap:8px}
-  .badge .bi{width:36px;height:36px}
-  .ggrid{grid-template-columns:1fr;grid-auto-rows:120px}
+  .follow{margin-left:-16px;padding:0 26px 0 16px}
+  .follow>span{display:none}
+  .sec{padding:80px 0}
+  .hero{min-height:0}
+  .hero .wrap{padding-top:56px;padding-bottom:150px}
+  .features .grid,.cgrid,.ngrid,.ab-split{grid-template-columns:1fr}
+  .pgrid{gap:16px}
+  .per h3{font-size:16px}.per p{font-size:13px}
+  .ab-art{height:400px}
+  .badge{left:0;bottom:2%;padding:12px 14px;font-size:13px;max-width:190px;gap:10px}
+  .badge .bi{width:40px;height:40px}
+  .ggrid{grid-template-columns:1fr;grid-auto-rows:200px}
   .gi.tall,.gi.wide{grid-row:auto;grid-column:auto}
   footer .grid{grid-template-columns:1fr}
-  .cnt b{font-size:38px}
+  .cnt b{font-size:40px}
+  .cnt .ico{width:76px;height:76px}
 }
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-ig" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></symbol>
   <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13 1.5 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.8c.9-.3 1.6.2 1.4 1.5z"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM10 8.5v7l6-3.5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM10 8.5v7l6-3.5z"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></symbol>
   <symbol id="i-audio" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 14v-2a9 9 0 0 1 18 0v2M21 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"/></symbol>
   <symbol id="i-gift" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></symbol>
   <symbol id="i-book" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
   <symbol id="i-bot" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 9h16v11H4zM12 5v4M9 14h.01M15 14h.01M9 17h6M12 5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></symbol>
-  <symbol id="i-mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#0f6b66"/><path d="M11 14v8a9 9 0 0 0 18 0v-8" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><circle cx="29" cy="11" r="4" fill="#f7a320"/><circle cx="11" cy="11" r="2.2" fill="#fff"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 2 9 2 12 0v-5"/></symbol>
+  <!-- UzNeyro mascot mark, redrawn from the Instagram avatar; replace with the original file when available -->
+  <symbol id="i-mark" viewBox="0 0 48 70"><path fill="#fff" d="M4 0h40v26H4z"/><path fill="#6c4be0" d="M14 8h6v8h-6zM29 9h5v7h-5z"/><path fill="#fff" d="M8 26h14a14 14 0 0 1 0 28H8z"/><path fill="#6c4be0" d="M15 33h7a7 7 0 0 1 0 14h-7z"/><path fill="none" stroke="#fff" stroke-width="8" stroke-linecap="square" d="M8 48v4a14 14 0 0 0 14 14h14a6 6 0 0 0 6-6v-12"/></symbol>
 </svg>
 
 <div class="topbar">
   <div class="wrap">
-    <div style="display:flex;align-items:center;gap:22px;align-self:stretch">
-      <div class="follow"><span data-ru="Мы в соцсетях">Bizni kuzating</span>
+    <div style="display:flex;align-items:center;gap:28px;align-self:stretch">
+      <div class="follow"><span data-ru="Мы в соцсетях:">Bizni kuzating:</span>
         <div class="soc">
           <a href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener" aria-label="Instagram UzNeyro RU"><svg><use href="#i-ig"/></svg></a>
           <a href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener" aria-label="Instagram UzNeyro EN"><svg><use href="#i-ig"/></svg></a>
-          <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" aria-label="Telegram bot"><svg><use href="#i-tg"/></svg></a>
+          <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a>
         </div>
       </div>
-      <div class="info">
-        <span><svg width="15" height="15"><use href="#i-globe"/></svg> uzneyro.uz</span>
-        <span><svg width="15" height="15"><use href="#i-tg"/></svg> @uzneyroenbot</span>
+      <div class="tinfo">
+        <span><svg><use href="#i-globe"/></svg> uzneyro.uz</span>
+        <span><svg><use href="#i-tg"/></svg> @uzneyroenbot</span>
+        <span><svg><use href="#i-ig"/></svg> @uzneyroru · @uzneyro_en</span>
       </div>
     </div>
-    <div class="lang" role="group" aria-label="Til / Язык">
-      <button data-l="uz" class="on">UZ</button><button data-l="ru">RU</button>
-    </div>
+    <div class="lang" role="group" aria-label="Til / Язык"><button data-l="uz" class="on">UZ</button><button data-l="ru">RU</button></div>
   </div>
 </div>
 
 <header class="nav">
   <div class="wrap">
-    <a href="#" class="logo"><svg width="40" height="40"><use href="#i-mark"/></svg><span>Uz<b>Neyro</b></span></a>
+    <a href="#top" class="logo"><span class="mk"><svg><use href="#i-mark"/></svg></span><span>Uz<b>Neyro</b></span></a>
     <nav class="menu" id="menu">
       <a href="#top" class="on" data-ru="Главная">Bosh sahifa</a>
       <a href="#courses" data-ru="Направления">Yo'nalishlar</a>
       <a href="#about" data-ru="О нас">Biz haqimizda</a>
-      <a href="#topics" data-ru="Темы">Mavzular</a>
-      <a href="#lessons" data-ru="Новые уроки">Yangi darslar</a>
+      <a href="#posts" data-ru="Уроки">Darslar</a>
+      <a href="#who" data-ru="Для кого">Kimlar uchun</a>
       <a href="#contact" data-ru="Контакты">Aloqa</a>
     </nav>
-    <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" class="btn btn-o" data-ru="Начать бесплатно →">Bepul boshlash →</a>
+    <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" class="btn btn-y"><span data-ru="Начать бесплатно">Bepul boshlash</span> <i>→</i></a>
     <button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <section class="hero" id="top">
+  <a class="arrow l" href="#courses" aria-label="Yo'nalishlar">←</a>
+  <a class="arrow r" href="#about" aria-label="Biz haqimizda">→</a>
   <div class="wrap">
-    <div>
-      <span class="tag" data-ru="Добро пожаловать в UzNeyro">UzNeyro'ga xush kelibsiz</span>
-      <h1><span data-ru="Русский и английский —">Rus va ingliz tili —</span> <span class="hl" data-ru="легко">oson</span> <span data-ru="и каждый день">va har kuni</span></h1>
-      <p data-ru="Короткие видеоуроки, тесты и полезные фразы на узбекском языке. Учитесь по 5 минут в день в Instagram и Telegram — бесплатно.">Qisqa videodarslar, testlar va foydali iboralar — o'zbek tilida tushuntirilgan. Instagram va Telegramda kuniga 5 daqiqa o'rganing — bepul.</p>
-      <div class="cta">
-        <a href="#courses" class="btn btn-o" data-ru="Выбрать язык →">Tilni tanlash →</a>
-        <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" class="btn btn-line" data-ru="Telegram-бот">Telegram bot</a>
-      </div>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="dots"></div>
-      <div class="bubble b1">Яя<sub>RUS</sub></div>
-      <div class="bubble b2">Aa<sub>ENG</sub></div>
-      <div class="bubble b3"><small data-ru="Фраза дня">Kun iborasi</small>«How much is this?» — <span data-ru="Сколько это стоит?">Bu qancha turadi?</span></div>
+    <span class="tag"><svg><use href="#i-cap"/></svg><span data-ru="Добро пожаловать в UzNeyro!">UzNeyro'ga xush kelibsiz!</span></span>
+    <h1><span data-ru="Заговорите по-русски и по-английски">Rus va ingliz tilida</span> <span class="hl" data-ru="уверенно">ishonch bilan</span> <span data-ru="">gapiring</span></h1>
+    <p data-ru="Короткие видеоуроки, тесты и живые фразы с объяснением на узбекском. По 5 минут в день — в Instagram и Telegram, бесплатно.">Qisqa videodarslar, testlar va jonli iboralar — o'zbek tilida tushuntirilgan. Kuniga 5 daqiqa — Instagram va Telegramda, bepul.</p>
+    <div class="cta">
+      <a href="#courses" class="btn btn-y"><span data-ru="Выбрать язык">Tilni tanlash</span> <i>→</i></a>
+      <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" class="btn btn-w"><span data-ru="Telegram-бот">Telegram bot</span> <i>→</i></a>
     </div>
   </div>
 </section>
 
 <section class="features">
   <div class="wrap grid">
-    <div class="fcard"><div class="top"><div class="ico"><svg><use href="#i-play"/></svg></div><span class="num">01</span></div>
-      <h3 data-ru="Короткие уроки">Qisqa darslar</h3><p data-ru="Одна тема — одно видео до минуты. Удобно смотреть в дороге.">Bitta mavzu — bitta video, bir daqiqagacha. Yo'lda ko'rish qulay.</p></div>
+    <div class="fcard"><div class="top"><div class="ico"><svg><use href="#i-video"/></svg></div><span class="num">01</span></div>
+      <h3 data-ru="Короткие уроки">Qisqa darslar</h3><p data-ru="Одна тема — одно видео до минуты. Удобно смотреть в дороге.">Bitta mavzu — bir daqiqalik video. Yo'lda ko'rish qulay.</p></div>
     <div class="fcard"><div class="top"><div class="ico"><svg><use href="#i-check"/></svg></div><span class="num">02</span></div>
       <h3 data-ru="Тесты с баллами">Ballik testlar</h3><p data-ru="Проверяйте себя: за каждый правильный ответ — балл.">O'zingizni sinang: har to'g'ri javob uchun ball.</p></div>
     <div class="fcard"><div class="top"><div class="ico"><svg><use href="#i-audio"/></svg></div><span class="num">03</span></div>
-      <h3 data-ru="Живые фразы">Jonli iboralar</h3><p data-ru="Аудио и фразы, которые нужны в магазине, в пути и на работе.">Do'kon, yo'l va ishda kerak bo'ladigan iboralar va audio.</p></div>
+      <h3 data-ru="Живые фразы">Jonli iboralar</h3><p data-ru="Фразы для магазина, врача, дороги и работы — с аудио.">Do'kon, shifokor, yo'l va ish uchun iboralar — audio bilan.</p></div>
     <div class="fcard"><div class="top"><div class="ico"><svg><use href="#i-gift"/></svg></div><span class="num">04</span></div>
       <h3 data-ru="Бесплатный старт">Bepul boshlash</h3><p data-ru="Начните бесплатно в нашем Telegram-боте.">Telegram botimizda bepul boshlang.</p></div>
   </div>
@@ -336,124 +357,124 @@ footer .soc svg{width:16px;height:16px}
 
 <section class="sec about" id="about">
   <div class="wrap">
-    <div class="about-art" aria-hidden="true">
-      <div class="pic p1"><span class="glyph">Яя</span><span class="cap" data-ru="Русский язык">Rus tili</span></div>
-      <div class="pic p2"><span class="glyph" style="font-size:56px">Aa</span></div>
-      <div class="pic p3"><span class="glyph" style="font-size:54px">IELTS</span><span class="cap">Speaking</span></div>
-      <div class="badge"><span class="bi"><svg width="22" height="22"><use href="#i-globe"/></svg></span><span data-ru="2 языка, объяснение на узбекском">2 til, o'zbek tilida tushuntirish</span></div>
+    <div class="ab-art">
+      <img class="ab1" src="https://images.unsplash.com/photo-1758598304642-54de59f8de4a?auto=format&fit=crop&w=700&h=900&q=70" alt="" loading="lazy">
+      <img class="ab2" src="https://images.unsplash.com/photo-1565598621680-94ac0c22b148?auto=format&fit=crop&w=500&h=500&q=70" alt="" loading="lazy">
+      <img class="ab3" src="https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=700&h=600&q=70" alt="" loading="lazy">
+      <div class="badge"><span class="bi"><svg><use href="#i-globe"/></svg></span><span data-ru="2 языка — объяснение на узбекском">2 til — o'zbek tilida tushuntirish</span></div>
     </div>
     <div>
-      <span class="tag" data-ru="О нас">Biz haqimizda</span>
+      <span class="tag"><svg><use href="#i-cap"/></svg><span data-ru="О нас">Biz haqimizda</span></span>
       <h2><span data-ru="Учим языкам так,">Tillarni shunday o'rgatamizki,</span> <span class="hl" data-ru="чтобы запоминалось">esda qoladi</span></h2>
-      <p class="lead" data-ru="UzNeyro — образовательный проект для тех, кто говорит по-узбекски и хочет свободно понимать русский и английский. Мы разбираем грамматику, слова и разговорные фразы простым языком и сразу закрепляем тестами.">UzNeyro — o'zbek tilida so'zlashuvchilar uchun ta'lim loyihasi: rus va ingliz tilini erkin tushunishni istaganlar uchun. Grammatika, so'zlar va so'zlashuv iboralarini oddiy tilda tushuntiramiz va darhol test bilan mustahkamlaymiz.</p>
-      <div class="split">
+      <p class="lead" data-ru="UzNeyro — образовательный проект для тех, кто говорит по-узбекски и хочет свободно понимать русский и английский. Разбираем грамматику, слова-ловушки и разговорные фразы простым языком и сразу закрепляем тестами.">UzNeyro — o'zbek tilida so'zlashuvchilar uchun ta'lim loyihasi. Grammatika, chalg'ituvchi so'zlar va so'zlashuv iboralarini oddiy tilda tushuntiramiz va darhol test bilan mustahkamlaymiz.</p>
+      <div class="ab-split">
         <div>
-          <div class="point"><div class="ico"><svg><use href="#i-book"/></svg></div><div><h4>UzNeyro RU</h4><p data-ru="Русский язык: слова, фразы, тесты.">Rus tili: so'zlar, iboralar, testlar.</p></div></div>
-          <div class="point"><div class="ico"><svg><use href="#i-globe"/></svg></div><div><h4>UzNeyro EDU (EN)</h4><p data-ru="Английский: грамматика, IELTS, speaking.">Ingliz tili: grammatika, IELTS, speaking.</p></div></div>
+          <div class="pt"><div class="ico"><svg><use href="#i-book"/></svg></div><div><h4>UzNeyro RU</h4><p data-ru="Русский: фразы, слова, тесты, аудио.">Rus tili: iboralar, so'zlar, testlar, audio.</p></div></div>
+          <div class="pt"><div class="ico"><svg><use href="#i-globe"/></svg></div><div><h4>UzNeyro EDU (EN)</h4><p data-ru="Английский: грамматика, IELTS, Speaking.">Ingliz tili: grammatika, IELTS, Speaking.</p></div></div>
         </div>
-        <div class="quote" data-ru="Каждый день — одна новая тема. Маленькие шаги быстро складываются в уверенную речь.">Har kuni — bitta yangi mavzu. Kichik qadamlar tezda ishonchli nutqqa aylanadi.</div>
+        <div class="quote"><span data-ru="Каждый день — одна новая тема. Маленькие шаги быстро складываются в уверенную речь.">Har kuni — bitta yangi mavzu. Kichik qadamlar tezda ishonchli nutqqa aylanadi.</span><b>”</b></div>
       </div>
-      <div class="row">
-        <a href="#courses" class="btn btn-o" data-ru="Направления →">Yo'nalishlar →</a>
-        <a class="call" href="https://t.me/uzneyroenbot" target="_blank" rel="noopener"><span class="ico"><svg width="20" height="20"><use href="#i-tg"/></svg></span><span><small data-ru="Пишите в Telegram">Telegramda yozing</small><b>@uzneyroenbot</b></span></a>
+      <div class="ab-row">
+        <a href="#courses" class="btn btn-v"><span data-ru="Подробнее">Batafsil</span> <i>→</i></a>
+        <a class="call" href="https://t.me/uzneyroenbot" target="_blank" rel="noopener"><span class="ico"><svg><use href="#i-tg"/></svg></span><span><small data-ru="Пишите в Telegram">Telegramda yozing</small><b>@uzneyroenbot</b></span></a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="counters">
+<section class="counters dark">
   <div class="wrap grid">
     <div class="cnt"><div class="ico"><svg><use href="#i-globe"/></svg></div><b>2</b><span data-ru="+ языка">+ til</span></div>
+    <div class="cnt"><div class="ico"><svg><use href="#i-video"/></svg></div><b>160+</b><span data-ru="+ видеоуроков">+ videodars</span></div>
     <div class="cnt"><div class="ico"><svg><use href="#i-users"/></svg></div><b>8700+</b><span data-ru="+ подписчиков">+ obunachi</span></div>
-    <div class="cnt"><div class="ico"><svg><use href="#i-play"/></svg></div><b data-ru="5 мин">5 min</b><span data-ru="+ в день достаточно">+ kuniga yetarli</span></div>
     <div class="cnt"><div class="ico"><svg><use href="#i-gift"/></svg></div><b data-ru="0 сум">0 so'm</b><span data-ru="+ чтобы начать">+ boshlash uchun</span></div>
   </div>
 </section>
 
 <section class="sec courses" id="courses">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag" data-ru="Направления">Yo'nalishlar</span>
+    <div class="head">
+      <span class="tag"><svg><use href="#i-cap"/></svg><span data-ru="Направления">Yo'nalishlar</span></span>
       <h2><span data-ru="Выберите свой">O'z</span> <span class="hl" data-ru="язык">tilingizni</span> <span data-ru="">tanlang</span></h2>
-      <p data-ru="Два направления, один подход: коротко, понятно, на узбекском.">Ikki yo'nalish, bitta yondashuv: qisqa, tushunarli, o'zbek tilida.</p>
+      <p data-ru="Два направления, один подход: коротко, понятно и на узбекском.">Ikki yo'nalish, bitta yondashuv: qisqa, tushunarli va o'zbek tilida.</p>
     </div>
     <div class="cgrid">
-      <article class="course"><div class="thumb th-ru">Яя<span class="pill">RUS TILI</span></div>
-        <div class="body"><div class="meta"><span>@uzneyroru</span><span>Instagram</span></div>
-        <h3>UzNeyro RU</h3><p data-ru="Русский для узбекоязычных: полезные фразы, слова-ловушки, аудио и тесты с баллами.">O'zbek tilida so'zlashuvchilar uchun rus tili: foydali iboralar, chalg'ituvchi so'zlar, audio va ballik testlar.</p>
-        <div class="foot"><span data-ru="Бесплатно">Bepul</span><a href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener" data-ru="Открыть →">Ochish →</a></div></div></article>
-      <article class="course"><div class="thumb th-en">Aa<span class="pill">ENGLISH</span></div>
-        <div class="body"><div class="meta"><span>@uzneyro_en</span><span>Instagram</span></div>
-        <h3>UzNeyro EDU (EN)</h3><p data-ru="Английский с нуля: грамматика на узбекском, порядок слов, разговорные фразы.">Ingliz tili noldan: o'zbek tilida grammatika, so'z tartibi, so'zlashuv iboralari.</p>
-        <div class="foot"><span data-ru="Бесплатно">Bepul</span><a href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener" data-ru="Открыть →">Ochish →</a></div></div></article>
-      <article class="course"><div class="thumb th-ielts" style="font-size:48px">IELTS<span class="pill">TELEGRAM</span></div>
-        <div class="body"><div class="meta"><span>@uzneyroenbot</span><span>Telegram</span></div>
-        <h3 data-ru="Бот: IELTS и Speaking">Bot: IELTS va Speaking</h3><p data-ru="Начните бесплатно в Telegram-боте: задания, советы и подготовка к IELTS.">Telegram botda bepul boshlang: topshiriqlar, maslahatlar va IELTSga tayyorgarlik.</p>
-        <div class="foot"><span data-ru="Бесплатный старт">Bepul start</span><a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" data-ru="Запустить →">Boshlash →</a></div></div></article>
+      <article class="course">
+        <div class="th"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=700&h=480&q=70" alt="" loading="lazy"><span class="pill">RUS TILI</span></div>
+        <div class="bd"><div class="meta"><span><svg><use href="#i-video"/></svg><span data-ru="77+ уроков">77+ dars</span></span><span><svg><use href="#i-ig"/></svg>@uzneyroru</span></div>
+        <h3>UzNeyro RU</h3><p data-ru="Русский для узбекоязычных: фразы для жизни, слова-ловушки, аудио и тесты с баллами.">Hayotiy iboralar, chalg'ituvchi so'zlar, audio va ballik testlar bilan rus tili.</p>
+        <div class="cfoot"><span class="free" data-ru="Бесплатно">Bepul</span><a href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener" data-ru="Открыть →">Ochish →</a></div></div>
+      </article>
+      <article class="course">
+        <div class="th"><img src="https://images.unsplash.com/photo-1758611973102-97b6b465ce20?auto=format&fit=crop&w=700&h=480&q=70" alt="" loading="lazy"><span class="pill">ENGLISH</span></div>
+        <div class="bd"><div class="meta"><span><svg><use href="#i-video"/></svg><span data-ru="83+ урока">83+ dars</span></span><span><svg><use href="#i-ig"/></svg>@uzneyro_en</span></div>
+        <h3>UzNeyro EDU (EN)</h3><p data-ru="Английский с объяснением на узбекском: грамматика, порядок слов, «ложные друзья».">O'zbek tilida tushuntirilgan ingliz tili: grammatika, so'z tartibi, «soxta do'stlar».</p>
+        <div class="cfoot"><span class="free" data-ru="Бесплатно">Bepul</span><a href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener" data-ru="Открыть →">Ochish →</a></div></div>
+      </article>
+      <article class="course">
+        <div class="th"><img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=700&h=480&q=70" alt="" loading="lazy"><span class="pill">IELTS · SPEAKING</span></div>
+        <div class="bd"><div class="meta"><span><svg><use href="#i-bot"/></svg>Telegram</span><span><svg><use href="#i-tg"/></svg>@uzneyroenbot</span></div>
+        <h3 data-ru="Бот: практика каждый день">Bot: har kuni mashq</h3><p data-ru="Начните бесплатно в Telegram-боте: задания, советы и подготовка к IELTS.">Telegram botda bepul boshlang: topshiriqlar, maslahatlar va IELTSga tayyorgarlik.</p>
+        <div class="cfoot"><span class="free" data-ru="Бесплатный старт">Bepul start</span><a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" data-ru="Запустить →">Boshlash →</a></div></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="who">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag" data-ru="Форматы">Formatlar</span>
-      <h2><span data-ru="Как проходят">Darslar</span> <span class="hl" data-ru="уроки">qanday</span> <span data-ru="">o'tadi</span></h2>
+    <div class="head">
+      <span class="tag"><svg><use href="#i-cap"/></svg><span data-ru="Для кого">Kimlar uchun</span></span>
+      <h2><span data-ru="UzNeyro подойдёт,">UzNeyro sizga mos,</span> <span class="hl" data-ru="если вы…">agar siz…</span></h2>
     </div>
-    <div class="fgrid">
-      <div class="fmt"><div class="ring"><div><svg><use href="#i-play"/></svg></div></div><h3 data-ru="Видео-reels">Video-reels</h3><p data-ru="Правило за минуту с примерами.">Bir daqiqada qoida va misollar.</p></div>
-      <div class="fmt"><div class="ring"><div><svg><use href="#i-check"/></svg></div></div><h3 data-ru="Тесты">Testlar</h3><p data-ru="Проверьте себя и наберите баллы.">O'zingizni sinab, ball to'plang.</p></div>
-      <div class="fmt"><div class="ring"><div><svg><use href="#i-audio"/></svg></div></div><h3 data-ru="Аудио">Audio</h3><p data-ru="Слушайте, как звучат фразы.">Iboralar qanday eshitilishini tinglang.</p></div>
-      <div class="fmt"><div class="ring"><div><svg><use href="#i-bot"/></svg></div></div><h3 data-ru="Telegram-бот">Telegram bot</h3><p data-ru="Практика в любое время.">Istalgan vaqtda mashq.</p></div>
+    <div class="pgrid">
+      <div class="per"><div class="ph"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?auto=format&fit=crop&w=500&h=560&q=70" alt="" loading="lazy"><span data-ru="Студент">Talaba</span></div><h3 data-ru="Учитесь">O'qiysiz</h3><p data-ru="Нужен язык для учёбы и экзаменов.">O'qish va imtihonlar uchun til kerak.</p></div>
+      <div class="per"><div class="ph"><img src="https://images.unsplash.com/photo-1749700332031-cf99864959ea?auto=format&fit=crop&w=500&h=560&q=70" alt="" loading="lazy"><span>IELTS</span></div><h3 data-ru="Готовитесь к IELTS">IELTSga tayyorlanasiz</h3><p data-ru="Speaking, грамматика и советы.">Speaking, grammatika va maslahatlar.</p></div>
+      <div class="per"><div class="ph"><img src="https://images.unsplash.com/photo-1625241152315-4a698f74ceb7?auto=format&fit=crop&w=500&h=560&q=70" alt="" loading="lazy"><span data-ru="Работа">Ish</span></div><h3 data-ru="Работаете с людьми">Odamlar bilan ishlaysiz</h3><p data-ru="Русский для работы, магазина и офиса.">Ish, do'kon va ofis uchun rus tili.</p></div>
+      <div class="per"><div class="ph"><img src="https://images.unsplash.com/photo-1749700332258-775b1b6b9cd5?auto=format&fit=crop&w=500&h=560&q=70" alt="" loading="lazy"><span data-ru="Путешествия">Sayohat</span></div><h3 data-ru="Едете за границу">Chet elga borasiz</h3><p data-ru="Фразы для дороги, врача и покупок.">Yo'l, shifokor va xarid uchun iboralar.</p></div>
     </div>
   </div>
 </section>
 
-<section class="sec gallery" id="topics">
+<section class="video dark">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag" data-ru="Темы">Mavzular</span>
+    <div>
+      <span class="tag"><svg><use href="#i-video"/></svg><span data-ru="Смотрите уроки">Darslarni ko'ring</span></span>
+      <h2><span data-ru="Новые видео —">Yangi videolar —</span> <span class="hl" data-ru="почти каждый день">deyarli har kuni</span></h2>
+      <p data-ru="Подпишитесь в Instagram, чтобы не пропустить новые правила, тесты и фразы.">Yangi qoidalar, testlar va iboralarni o'tkazib yubormaslik uchun Instagramda obuna bo'ling.</p>
+    </div>
+    <a class="play" href="https://www.instagram.com/uzneyro_en/reels/" target="_blank" rel="noopener" aria-label="Instagram Reels"><svg><use href="#i-play"/></svg></a>
+  </div>
+</section>
+
+<section class="sec" id="posts">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag"><svg><use href="#i-cap"/></svg><span data-ru="Из наших уроков">Darslarimizdan</span></span>
       <h2><span data-ru="Что мы">Nimalarni</span> <span class="hl" data-ru="разбираем">o'rganamiz</span></h2>
     </div>
     <div class="ggrid">
-      <div class="gi g1 tall"><span class="big">Aa</span><small>English</small><b data-ru="Прилагательное или наречие?">Sifat yoki ravish?</b></div>
-      <div class="gi g2 wide"><span class="big">?</span><small>English</small><b data-ru="Порядок слов: Do you know where…">So'z tartibi: Do you know where…</b></div>
-      <div class="gi g3"><span class="big">Яя</span><small>Rus tili</small><b data-ru="«Близкий друг»">«Yaqin do'st»</b></div>
-      <div class="gi g4"><span class="big">♪</span><small>Audio</small><b data-ru="Как мне пройти?">Qanday boraman?</b></div>
-      <div class="gi g5"><span class="big">$</span><small>English</small><b>How much is this?</b></div>
-      <div class="gi g6 wide"><span class="big">✓</span><small data-ru="Тест">Test</small><b data-ru="Тесты по русскому с баллами">Rus tilidan ballik testlar</b></div>
-    </div>
+      <a class="gi post-en tall" href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener"><span class="k" data-ru="Ложный друг">Soxta do'st</span><span class="strike">«Her cabinet is upstairs.»</span><span class="big">OFFICE</span><span class="ok">✅ Her office is upstairs.</span></a>
+      <a class="gi photo wide" href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=900&h=440&q=70" alt="" loading="lazy"><span class="cap" data-ru="Диалоги из жизни: магазин, офис, дорога">Hayotiy dialoglar: do'kon, ofis, yo'l</span></a>
+      <a class="gi post-ru" href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener"><span class="k" data-ru="Одно слово меняется">Bir so'z o'zgaradi</span><span class="ru">книга сестры</span><span class="dot"></span></a>
+      <a class="gi post-audio" href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener"><span class="chip">AUDIO · 22</span><b data-ru="4 нужные фразы у врача">Shifokorda 4 ta zarur gap</b></a>
+      <a class="gi post-list wide" href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener"><div><s>book is my</s><em>→ BOOK IS MINE</em></div><div><s>of me</s><em>→ OF MINE</em></div><div><s>is her</s><em>→ IS HERS</em></div></a>    </div>
   </div>
 </section>
 
-<section class="sec how">
+<section class="sec courses" id="lessons">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag" data-ru="Как начать">Qanday boshlash</span>
-      <h2><span data-ru="Три шага до">Birinchi darsgacha</span> <span class="hl" data-ru="первого урока">uch qadam</span></h2>
-      <p data-ru="Без регистрации и оплаты.">Ro'yxatdan o'tish va to'lovsiz.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h3 data-ru="Выберите язык">Tilni tanlang</h3><p data-ru="Русский — @uzneyroru, английский — @uzneyro_en.">Rus tili — @uzneyroru, ingliz tili — @uzneyro_en.</p></div>
-      <div class="step"><div class="n">2</div><h3 data-ru="Подпишитесь">Obuna bo'ling</h3><p data-ru="Новые уроки выходят почти каждый день.">Yangi darslar deyarli har kuni chiqadi.</p></div>
-      <div class="step"><div class="n">3</div><h3 data-ru="Практикуйтесь в боте">Botda mashq qiling</h3><p data-ru="Запустите Telegram-бота и начните бесплатно.">Telegram botni ishga tushiring va bepul boshlang.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="lessons">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag" data-ru="Новые уроки">Yangi darslar</span>
-      <h2><span data-ru="Свежее в">Instagramda</span> <span class="hl" data-ru="Instagram">yangi</span></h2>
+    <div class="head">
+      <span class="tag"><svg><use href="#i-cap"/></svg><span data-ru="Новые уроки">Yangi darslar</span></span>
+      <h2><span data-ru="Свежее в">Instagramdagi</span> <span class="hl" data-ru="Instagram">yangi darslar</span></h2>
     </div>
     <div class="ngrid">
-      <a class="news" href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener"><div class="nt" style="background:var(--orange)">Sifat • Ravish</div>
-        <div class="nb"><span class="when">EN</span><h3 data-ru="He played well: почему well, а не good">He played well: nega good emas, well</h3><p data-ru="Разница между прилагательным и наречием на простых примерах.">Sifat va ravish farqi oddiy misollarda.</p></div></a>
-      <a class="news" href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener"><div class="nt" style="background:var(--teal-700)" data-ru="4 полезные фразы">4 foydali ibora</div>
-        <div class="nb"><span class="when">RU</span><h3 data-ru="Как спросить дорогу по-русски">Rus tilida yo'l qanday so'raladi</h3><p data-ru="Аудиоурок: фразы для улицы и транспорта.">Audiodars: ko'cha va transport uchun iboralar.</p></div></a>
-      <a class="news" href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener"><div class="nt" style="background:#14233a">So'z tartibi</div>
-        <div class="nb"><span class="when">EN</span><h3 data-ru="Do you know where the station is?">Do you know where the station is?</h3><p data-ru="Порядок слов в косвенных вопросах.">Bilvosita savollarda so'z tartibi.</p></div></a>
+      <a class="news" href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener"><div class="nt"><img src="https://images.unsplash.com/photo-1758270705518-b61b40527e76?auto=format&fit=crop&w=700&h=420&q=70" alt="" loading="lazy"><span class="date">EN</span></div>
+        <div class="nb"><div class="by"><span>@uzneyro_en</span><span>Grammar</span></div><h3 data-ru="He played well: почему well, а не good">He played well: nega good emas, well?</h3><p data-ru="Разница между прилагательным и наречием на простых примерах.">Sifat va ravish farqi oddiy misollarda.</p><span class="more" data-ru="Смотреть →">Ko'rish →</span></div></a>
+      <a class="news" href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener"><div class="nt"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&h=420&q=70" alt="" loading="lazy"><span class="date">RU</span></div>
+        <div class="nb"><div class="by"><span>@uzneyroru</span><span>Audio</span></div><h3 data-ru="Как спросить дорогу по-русски">Rus tilida yo'lni qanday so'rash mumkin?</h3><p data-ru="Аудиоурок: фразы для улицы и транспорта.">Audiodars: ko'cha va transport uchun iboralar.</p><span class="more" data-ru="Смотреть →">Ko'rish →</span></div></a>
+      <a class="news" href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener"><div class="nt"><img src="https://images.unsplash.com/photo-1553729784-e91953dec042?auto=format&fit=crop&w=700&h=420&q=70" alt="" loading="lazy"><span class="date">EN</span></div>
+        <div class="nb"><div class="by"><span>@uzneyro_en</span><span>Word order</span></div><h3>Do you know where the station is?</h3><p data-ru="Порядок слов в косвенных вопросах.">Bilvosita savollarda so'z tartibi.</p><span class="more" data-ru="Смотреть →">Ko'rish →</span></div></a>
     </div>
   </div>
 </section>
@@ -463,7 +484,7 @@ footer .soc svg{width:16px;height:16px}
     <div class="box">
       <div><h2 data-ru="Начните учиться сегодня">Bugun o'rganishni boshlang</h2><p data-ru="Подпишитесь на нас и запустите бесплатного Telegram-бота.">Bizga obuna bo'ling va bepul Telegram botni ishga tushiring.</p></div>
       <div class="acts">
-        <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" class="btn btn-t" data-ru="Telegram-бот →">Telegram bot →</a>
+        <a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener" class="btn btn-y"><span data-ru="Telegram-бот">Telegram bot</span> <i>→</i></a>
         <a href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener" class="btn btn-w">Instagram RU</a>
         <a href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener" class="btn btn-w">Instagram EN</a>
       </div>
@@ -473,8 +494,8 @@ footer .soc svg{width:16px;height:16px}
 
 <footer>
   <div class="wrap grid">
-    <div><a href="#" class="logo"><svg width="40" height="40"><use href="#i-mark"/></svg><span>Uz<b>Neyro</b></span></a>
-      <p data-ru="Русский и английский язык для узбекоязычных — коротко, понятно и бесплатно.">O'zbek tilida so'zlashuvchilar uchun rus va ingliz tili — qisqa, tushunarli va bepul.</p>
+    <div><a href="#top" class="logo"><span class="mk"><svg><use href="#i-mark"/></svg></span><span>Uz<b>Neyro</b></span></a>
+      <p data-ru="Русский и английский для узбекоязычных — коротко, понятно и бесплатно.">O'zbek tilida so'zlashuvchilar uchun rus va ingliz tili — qisqa, tushunarli va bepul.</p>
       <div class="soc">
         <a href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener" aria-label="Instagram RU"><svg><use href="#i-ig"/></svg></a>
         <a href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener" aria-label="Instagram EN"><svg><use href="#i-ig"/></svg></a>
@@ -483,11 +504,11 @@ footer .soc svg{width:16px;height:16px}
     <div><h4 data-ru="Направления">Yo'nalishlar</h4><ul>
       <li><a href="https://www.instagram.com/uzneyroru/" target="_blank" rel="noopener">UzNeyro RU</a></li>
       <li><a href="https://www.instagram.com/uzneyro_en/" target="_blank" rel="noopener">UzNeyro EDU (EN)</a></li>
-      <li><a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener">IELTS / Speaking</a></li></ul></div>
+      <li><a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener">IELTS · Speaking</a></li></ul></div>
     <div><h4 data-ru="Разделы">Bo'limlar</h4><ul>
       <li><a href="#about" data-ru="О нас">Biz haqimizda</a></li>
-      <li><a href="#topics" data-ru="Темы">Mavzular</a></li>
-      <li><a href="#lessons" data-ru="Новые уроки">Yangi darslar</a></li></ul></div>
+      <li><a href="#who" data-ru="Для кого">Kimlar uchun</a></li>
+      <li><a href="#posts" data-ru="Уроки">Darslar</a></li></ul></div>
     <div><h4 data-ru="Контакты">Aloqa</h4><ul>
       <li>uzneyro.uz</li>
       <li><a href="https://t.me/uzneyroenbot" target="_blank" rel="noopener">Telegram: @uzneyroenbot</a></li>
